@@ -10,7 +10,7 @@ REST API client and CLI for a Dragon cluster. It is implemented with `requests` 
 To install the client and CLI package:
 
 ```bash
-pip install https://github.com/DragonHPC/dragon-cloud-client.git
+pip install git+https://github.com/DragonHPC/dragon-cloud-client.git
 ```
 
 
