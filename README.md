@@ -29,7 +29,7 @@ The values for all the above variables will be provided by the administrator of 
 
 
 
-### Start using the client: make http requests
+### Start using the client: make HTTP requests
 
 Now, we're ready to make requests to the dragon api server.
 
