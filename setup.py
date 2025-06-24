@@ -1,0 +1,14 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="dragon-api-client",
+    version="0.1.0",
+    description="Python API Client and CLI for the Dragon REST Python API",
+    packages=find_packages(),
+    install_requires=["requests", "PyYAML", "click"],
+    entry_points={
+        "console_scripts": [
+            "dragon = dragon_api_client.cli:cli",
+        ],
+    },
+)
