@@ -7,6 +7,7 @@ REST API client and CLI for a Dragon cluster. It is implemented with `requests` 
 
 ## Installation
 
+The Dragon client currently requires a minimum python version of 3.10. 
 To install the client and CLI package:
 
 ```bash
