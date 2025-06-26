@@ -36,7 +36,7 @@ def _request(method: str, path: str, **kwargs) -> dict | list | str:
             )
         elif err.response.status_code == 503:
             print(
-                "Ingress authentication is not set up properly. Please make sure that the Ingress Secret is created.",
+                "503 Service Temporarily Unavailable: the cluster is gone or the ingress authentication is not set up properly. Please make sure that the Ingress Secret is created.",
                 flush=True,
             )
         elif err.response.status_code == 404:
