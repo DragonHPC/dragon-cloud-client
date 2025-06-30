@@ -7,7 +7,7 @@ REST API client and CLI for a Dragon cluster. It is implemented with `requests` 
 
 ## Installation
 
-The Dragon client currently requires a minimum python version of 3.10. 
+The Dragon client currently requires a minimum python version of 3.10.
 To install the client and CLI package:
 
 ```bash
@@ -28,6 +28,14 @@ export AUTH_PASSWORD=<psw>
 
 The values for all the above variables will be provided by the administrator of the Dragon cluster.
 
+Alternatively, a yaml file can be used. The full path of the file is provided by setting the following variable:
+
+```bash
+export CONFIG_YAML_FILE=path/filename.yaml
+```
+
+When the above variable is set to a non-empty value, then the code will use the provided file for configuration.
+We provide an example file, `my_config.yaml`, you can use and update the values.
 
 
 ### Start using the client: make HTTP requests
