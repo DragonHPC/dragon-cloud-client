@@ -42,6 +42,9 @@ class ClusterSettings:
         self.timeout = 20  # seconds
         self.base_url = self._get_url()
 
+        # this is needed for the cluster creation
+        os.environ["DOMAIN_NAME"] = self.domain_name
+
     def _load_from_file(self, yaml_file):
         config_path = Path(yaml_file)
         if not config_path.exists():
