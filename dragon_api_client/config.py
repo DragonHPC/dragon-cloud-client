@@ -23,26 +23,35 @@ class ClusterSettings:
                 sys.exit(f"Failed to load the config file: {e}")
         else:
             self.namespace = os.getenv("CLUSTER_NAMESPACE", "default")
-            self.release_name = os.getenv("RELEASE_NAME")
-            self.domain_name = os.getenv("DOMAIN_NAME")
-            self.username = os.getenv("AUTH_USERNAME")
-            self.psw = os.getenv("AUTH_PASSWORD")
+            self.release_name = os.getenv("RELEASE_NAME", "")
+            self.domain_name = os.getenv("DOMAIN_NAME", "")
+            self.username = os.getenv("AUTH_USERNAME", "")
+            self.psw = os.getenv("AUTH_PASSWORD", "")
 
-        if (
-            not self.release_name
-            and not self.domain_name
-            and not self.username
-            and not self.psw
-        ):
+        # Trim any trailing white space
+        self.namespace = self.namespace.strip() if self.namespace else self.namespace
+        self.release_name = (
+            self.release_name.strip() if self.release_name else self.release_name
+        )
+        self.domain_name = (
+            self.domain_name.strip() if self.domain_name else self.domain_name
+        )
+        self.username = self.username.strip() if self.username else self.username
+        self.psw = self.psw.strip() if self.psw else self.psw
+
+        # check that all the variables have been properly set
+        if not all([self.release_name, self.domain_name, self.username, self.psw]):
             sys.exit(
                 "You need to provide values for the following variables: RELEASE_NAME, DOMAIN_NAME, AUTH_USERNAME and AUTH_PASSWORD. Exiting ..."
             )
+
         self.dns_domain = f"{self.release_name}.{self.domain_name}"
 
         self.timeout = 20  # seconds
         self.base_url = self._get_url()
 
         # this is needed for the cluster creation
+        assert self.domain_name
         os.environ["DOMAIN_NAME"] = self.domain_name
 
     def _load_from_file(self, yaml_file):
